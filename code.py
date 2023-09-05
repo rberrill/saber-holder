@@ -141,6 +141,18 @@ def displayShimmer():
                 f"LED {pixelOrder[k]} shimmering with color (R: {int(r)}, G: {int(g)}, B: {int(b)}) and brightness {brightness}"
             )
 
+def set_led_color(led_index, color):
+    """Set the color of a specific LED."""
+    if 0 <= led_index < NUMPIXELS:
+        r, g, b, brightness = color
+        strip[pixelOrder[led_index]] = (int(r * brightness), int(g * brightness), int(b * brightness))
+        strip.show()
+
+def flash_leds(start_led, flash_spread, color):
+    """Illuminate the LEDs based on the starting LED and flash spread."""
+    for step in range(-flash_spread, flash_spread + 1):
+        set_led_color(start_led + step, color)
+
 def saber_flash():
     # Randomly select a starting LED
     start_led = random.randint(0, NUMPIXELS - 1)
@@ -152,31 +164,13 @@ def saber_flash():
         # Randomly determine the extent of the flash spread
         flash_spread = random.randint(MIN_FLASH_SPREAD, MAX_FLASH_SPREAD)
 
-        # Illuminate the LEDs to the right and left of the starting LED
-        for step in range(flash_spread):
-            r, g, b, brightness = FLASH_COLOR
-            if 0 <= start_led + step < NUMPIXELS:
-                strip[pixelOrder[start_led + step]] = (
-                    int(r * brightness),
-                    int(g * brightness),
-                    int(b * brightness),
-                )
-            if 0 <= start_led - step < NUMPIXELS:
-                strip[pixelOrder[start_led - step]] = (
-                    int(r * brightness),
-                    int(g * brightness),
-                    int(b * brightness),
-                )
-            strip.show()
-            time.sleep(random.uniform(MIN_FLASH_DELAY, MAX_FLASH_DELAY))
-        # Turn off the LEDs in the opposite sequence they were turned on
-        for step in reversed(range(flash_spread)):
-            if 0 <= start_led + step < NUMPIXELS:
-                strip[pixelOrder[start_led + step]] = (0, 0, 0)
-            if 0 <= start_led - step < NUMPIXELS:
-                strip[pixelOrder[start_led - step]] = (0, 0, 0)
-            strip.show()
-            time.sleep(random.uniform(MIN_FLASH_DELAY, MAX_FLASH_DELAY))
+        # Illuminate the LEDs
+        flash_leds(start_led, flash_spread, FLASH_COLOR)
+        time.sleep(random.uniform(MIN_FLASH_DELAY, MAX_FLASH_DELAY))
+
+        # Turn off the LEDs
+        flash_leds(start_led, flash_spread, (0, 0, 0, 1))
+        time.sleep(random.uniform(MIN_FLASH_DELAY, MAX_FLASH_DELAY))
 
 while True:
     currentMillis = time.monotonic()
