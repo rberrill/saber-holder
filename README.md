@@ -1,8 +1,8 @@
-# NEOPIXEL Pattern Display for ESP32-S3
+# NEOPIXEL Pattern Display for RP2040
 
 ## Description
 
-This repository hosts code designed for the SEEED ESP32-S3 microcontroller to control a series of NEOPIXELS LEDs. The primary feature is a dynamic lighting effect that displays a shifting pattern across the LEDs. As the pattern progresses, it begins with the rightmost pixel of the pattern on the first NEOPIXEL (ID 0) and concludes when the leftmost pixel of the pattern reaches the last NEOPIXEL. Once the pattern completes its cycle, it restarts, creating a continuous loop of the shifting pattern effect.
+This repository hosts code designed for the SEEED RP2040 microcontroller to control a series of NEOPIXELS LEDs. The primary feature is a dynamic lighting effect that displays a shifting pattern across the LEDs. As the pattern progresses, it begins with the rightmost pixel of the pattern on the first NEOPIXEL (ID 0) and concludes when the leftmost pixel of the pattern reaches the last NEOPIXEL. Once the pattern completes its cycle, it restarts, creating a continuous loop of the shifting pattern effect.
 
 ## Purpose
 
