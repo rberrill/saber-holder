@@ -5,7 +5,7 @@ Description: A program to control an LED strip using an RP2040 SEEED chip.
              a pattern.
 Author: Richard Berrill
 Date Created: September 3, 2023
-Last Modified: September 4, 2023
+Last Modified: September 5, 2023
 Version: 0.1.1
 License: Creative Commons Attribution 4.0 International License (CC BY 4.0)
          For full license details, please refer to the LICENSE file or visit:
