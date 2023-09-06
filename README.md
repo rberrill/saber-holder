@@ -17,10 +17,11 @@ The primary purpose of this code is to enhance visual displays by providing a dy
 
 ## Version
 
-Current Version: **0.1.1**
+Current Version: **0.1.2**
 
 ### Changelog
 
+- **0.1.2** - Removed pattern method for now.
 - **0.1.1** - Added shimmer and saber flash modes.
 - **0.1.0** - Initial release with basic pattern shifting functionality.
 
